@@ -157,7 +157,7 @@ func insertDb(movies []Movie) {
 
 	for i := 0; i < len(movies); i++ {
 		movie := movies[i]
-		_, e := tx.Exec("INSERT INTO douban_movie_top250(name,score,comment_count,create_time) values(?,?,?,?)", movie.name, movie.score, movie.commentCount, time.Now())
+		_, e := tx.Exec("INSERT INTO douban_movie_top250(rank, name,score,comment_count,create_time) values(?,?,?,?,?)", movie.rank, movie.name, movie.score, movie.commentCount, time.Now())
 		if e != nil {
 			//如果插入失败，则结束整个程序
 			panic(e)
